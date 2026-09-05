@@ -1,17 +1,19 @@
-# second_app
+# Currency Converter
 
-A new Flutter project.
+A simple one-screen mobile app to convert between currencies, built with Flutter.
 
-## Getting Started
+## Features
+- Convert from dollar to INR currencies
+- Clean, single-screen UI
 
-This project is a starting point for a Flutter application.
+## Screenshots
+<img width="1142" height="1538" alt="image" src="https://github.com/user-attachments/assets/cffef832-3b49-494a-8d4b-a7e3de4b3041" />
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
+- Flutter / Dart
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## What I Learned
+This was my first mobile app — built to practice Flutter fundamentals like [layouts, widgets, basic boiler plate code and fundamentals].
+
+
