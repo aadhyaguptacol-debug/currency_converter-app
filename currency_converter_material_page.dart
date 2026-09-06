@@ -1,0 +1,103 @@
+import 'package:flutter/material.dart';
+
+class CurrencyConverterMaterialPage extends StatefulWidget {
+  const CurrencyConverterMaterialPage({super.key});
+
+  @override
+  State<CurrencyConverterMaterialPage> createState() =>
+      _CurrencyConverterMaterialPageState();
+}
+
+class _CurrencyConverterMaterialPageState
+    extends State<CurrencyConverterMaterialPage> {
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
+
+  void convert() {
+    
+    final input = double.tryParse(textEditingController.text) ?? 0;
+    setState(() {
+      result = input * 81; // Converts USD input to INR
+    });
+  }
+
+  @override
+  void dispose() {
+    // Prevent memory leaks by disposing controller
+    textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    const border = OutlineInputBorder(
+      borderSide: BorderSide(
+        width: 2.0,
+        style: BorderStyle.solid,
+      ),
+      borderRadius: BorderRadius.all(Radius.circular(5)),
+    );
+
+    return Scaffold(
+      backgroundColor: Colors.blueGrey,
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          'Currency Converter',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'INR ${result.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: textEditingController,
+                style: const TextStyle(color: Colors.black),
+                decoration: const InputDecoration(
+                  hintText: 'Please enter the amount in USD',
+                  hintStyle: TextStyle(color: Colors.black54),
+                  prefixIcon: Icon(Icons.monetization_on_outlined),
+                  prefixIconColor: Colors.black,
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: border,
+                  enabledBorder: border,
+                ),
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
+              ),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: convert,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+                child: const Text('Convert'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
